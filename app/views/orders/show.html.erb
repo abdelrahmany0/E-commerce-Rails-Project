@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row justify-content-center bg-white p-4 shadow rounded my-3">
+    <h2>Order Details</h2>
+  </div>
+  <div class="card container shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+      <p>
+        <strong>Order issued by: </strong>
+        <%= @order.user.name %>
+      </p>
+      <p>
+        <strong>Order issued at: </strong>
+        <%= @order.created_at %>
+      </p>
+      <p><strong>Total: $</strong><%= @order.total %></p>
+
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+          <th scope="col">Confirmed</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render @items %>
+        </tbody>
+      </table>
+      <div>
+        <% if can? :manage, @order %>
+          <% if @order.delivered? %>
+            <span>Delivered Successfully.</span>
+          <% else %>
+            <%= form_tag order_path, :method => :put do %>
+              <% if @accepted_count == @order.product_adapter.size %>
+                <%= hidden_field_tag :mark_delivered, true %>
+                <%= submit_tag "Set as delivered", { :class => "btn btn-success" } %>
+              <% elsif @accepted_count == @items.count %>
+                <%= submit_tag "Waiting other sellers to accept...", { :disabled => true, :class => "btn btn-success" } %>
+              <% else %>
+                <%= submit_tag :Accept, { :class => "btn btn-success" } %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= render "status", :order => @order %>
+
+        <% end %>
+      </div>
+
+      <a href="<%= orders_path %>" class="btn btn-secondary m-1"> Back </a>
+    </div>
+  </div>
+
+</div>

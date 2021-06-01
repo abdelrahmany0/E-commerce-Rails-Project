@@ -1,0 +1,77 @@
+<% content_for :title do %>Products
+<% end %>
+<% content_for :stylesheets do %>
+  <link rel="stylesheet" href="assets/filter/filter.css">
+<% end %>
+<% content_for :scripts do %>
+  <script src="assets/filter/filter.js"></script>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+<div class="row bg-white p-4 mb-3 shadow rounded">
+  <div class="col-md-9">
+    <h1>Products</h1>
+  </div>
+  <% if can? :create, Product %>
+    <div class="px-4 col-md-3 text-right">
+      <%= link_to 'Add New Product', new_product_path, class: "btn btn-success mb-2" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="row ml-2">
+  <div class="col-12 col-md-5 col-lg-3 bg-light rounded-lg img-thumbnail filter">
+    <h2>Filter</h2>
+    <%= render 'filter', categories: @categories, brands: @brands %>
+  </div>
+  <div class="col-12 col-md-7 col-lg-9 bg-light rounded-lg img-thumbnail">
+    <div class="row justify-content-center py-4">
+      <% @products.each do |product| %>
+        <% if product.in_stock > 0 %>
+          <div class="card my-2 col-12 col-md-4 col-lg-3 rounded-lg mx-2 card-shadow">
+            <div class="text-center">
+              <%= image_tag product.images.first,
+                            class: "card-img-top rounded-lg border m-2 w-50" if product.images.attached? %>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title"><%= product.title %></h5>
+              <small class="text-muted d-block">Brand: <%= product.brand.name %></small>
+              <small class="text-muted d-block">Category: <%= product.category.name %></small>
+            </div>
+            <div class="card-body p-0 pb-2">
+              <p class="card-text"><%= product.description %></p>
+              <p class="card-text">left: <%= product.in_stock %></p>
+              <p class="card-text">price: $<%= product.price %></p>
+              <div class="" style="bottom:2px;height: 45%">
+                <% if can? :read, product %>
+                  <%= link_to 'Show', product, class: "btn btn-primary" %>
+                <% end %>
+                <% if can? :update, product %>
+                  <%= link_to 'Edit', edit_product_path(product), class: "btn btn-info" %>
+                <% end %>
+                <% if can? :destroy, product %>
+                  <%= link_to 'Delete', product, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+                <% if can? :create, Cart %>
+                  <div class="mt-2">
+                    <%= render "carts/form", :product => product %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <% if @products.blank? %>
+      <div>
+        <span>Sorry, no items found!</span>
+        <i class="fas fa-frown"></i>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+<br>
+
+

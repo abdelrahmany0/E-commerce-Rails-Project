@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="css/all.min.css"> -->
+  <%#= stylesheet_link_tag "style.css" %>
+  <!-- <link rel="stylesheet" href="css/queries.css"> -->
+  <script
+  src="https://kit.fontawesome.com/7f1419bc41.js"
+  crossorigin="anonymous"
+></script>
+  <style>
+      h2::after {
+          display: block;
+          height: 1px;
+          background-color: #000;
+          content: " ";
+          margin: 1rem auto;
+          width: 50px;
+          transition: width 0.4s;
+      }
+      .heading:hover h2:after {
+          width: 90px;
+      }
+
+      .icon-color {
+          color: #f25454;
+      }
+      p {
+          font-size: 1.1rem;
+      }
+      h3 {
+          font-size: 1.3rem;
+      }
+
+      /******  End Main Rules ************/
+
+      /* Start Header Section  */
+
+      .carousel-caption {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: 10;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          color: #fff;
+          text-align: center;
+          transform: translate(-50%, -50%);
+      }
+      header .font-weight-bolder {
+          font-size: 5rem;
+      }
+      .carousel-item img {
+          height: 100vh;
+      }
+
+      #carouselExampleCaptions .carousel-control-prev {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 50px;
+          height: 50px;
+          transform: translateY(-50%);
+          border: 1px solid #fff;
+          z-index: 11;
+      }
+      #carouselExampleCaptions .carousel-control-next {
+          position: absolute;
+          top: calc(50% + 50px);
+          left: 0px;
+          width: 50px;
+          height: 50px;
+          transform: translateY(-50%);
+          border: 1px solid #fff;
+          border-top: none;
+          z-index: 11;
+      }
+
+      .carousel-icon:hover {
+          background-color: #fff;
+          color: #f25454 !important;
+      }
+
+      /* End Header Section  */
+      /* Start About Section  */
+      .heading {
+          position: relative;
+      }
+      .heading h2 {
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, 20px);
+      }
+      .heading h3 {
+          font-size: 3rem;
+          color: #e9e7e7;
+      }
+      .progress {
+          height: 4px;
+      }
+      .progress-head {
+          font-size: 0.9rem;
+          font-weight: 750;
+      }
+      .progress-bar {
+          background-color: #f25454;
+          height: 4px;
+      }
+      /* End About Section  */
+
+      /* Start Our Team Section  */
+      .member-name {
+          font-size: 1.12rem;
+          font-weight: bold;
+          transition: color 0.5s;
+      }
+      .member-details h6 {
+          font-size: 0.85rem;
+      }
+      #our-team .overlay {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          transition: 0.5s background-color;
+      }
+      #our-team .layer img {
+          transition: transform 0.7s;
+      }
+      #our-team .layer:hover .overlay {
+          top: 0;
+          background-color: rgba(247, 123, 123, 0.85);
+      }
+      #our-team .layer:hover img {
+          transform: scale(1.1);
+      }
+      #our-team .layer:hover .member-details .member-name {
+          color: #f25454;
+      }
+
+      .contact-us {
+          background-color: #f25454;
+          transition: background-color 0.5s;
+      }
+      .contact-us:hover {
+          background-color: #f38383;
+      }
+      /* End Our Team Section  */
+
+      /* Start Services Section  */
+      .sevice-item-head {
+          transition: color 0.5s;
+      }
+      .item:hover .sevice-item-head {
+          color: #f25454;
+      }
+
+      /* End Services Section  */
+
+      /* Start Contact Section  */
+      #contact .contact-info h3 {
+          font-size: 2rem;
+          line-height: 36px;
+      }
+      .contact-info .contact-item-brdr {
+          border-bottom: 1px solid #eee;
+      }
+      .contact-info .contact-item h5 {
+          transition: color 0.5s;
+      }
+      .contact-info .contact-item:hover h5 {
+          color: #f25454;
+      }
+      .contact-info .contact-mail a {
+          color: #444;
+          transition: color 0.5s;
+      }
+      .contact-info .contact-mail a:hover,
+      #footer-sec .widgt-link:hover {
+          color: #f25454;
+      }
+      /* End Contact Section  */
+
+      /* Start Footer Section  */
+      .arrow {
+          background: rgba(242, 84, 84, 0.5);
+          position: absolute;
+          z-index: 10;
+          left: 0;
+          right: 0;
+          top: -25px;
+          width: 50px;
+          height: 50px;
+          margin: 0 auto;
+          padding-top: 10px;
+          border-radius: 50%;
+          font-size: 18px;
+          text-align: center;
+          cursor: pointer !important;
+          transition: background-color 0.3s;
+      }
+      .arrow:hover {
+          background-color: #f25454;
+      }
+      .arrow a {
+          text-decoration: none;
+          color: #fff;
+      }
+      #footer-sec .footer-layer {
+          height: 100%;
+          /*background-image: url(../images/dotted-map.png);*/
+          background-position: center;
+          background-color: #222;
+      }
+      .widgt-list,
+      #footer-sec .widgt-link {
+          list-style: none;
+          color: #b0b0b0;
+      }
+      #footer-sec .widgt-link {
+          transition: color 0.5s;
+      }
+      #footer-sec .tags a {
+          display: inline-block;
+          padding: 2px 10px;
+          margin: 0 0.5rem 0.5rem 0;
+          text-decoration: none;
+          color: #b0b0b0;
+          border-radius: 3px;
+          border: 1px solid #b0b0b0;
+          font-size: 15px;
+          transition: color 0.5s, border-color 0.5s;
+      }
+      #footer-sec .tags a:hover {
+          color: #f25454;
+          border-color: #f25454;
+      }
+      .footer-copyright {
+          background-color: #1a1a1a;
+      }
+      .social-icon {
+          text-align: center;
+          color: #fff;
+          margin: 0 0.7rem;
+          font-size: 1.2rem;
+          transition: background-color 0.5s, color 0.5s;
+      }
+
+      .social-icon:hover {
+          color: #f25454 !important;
+      }
+      .copyright p {
+          font-size: 1rem;
+          color: #b0b0b0;
+      }
+      .copyright span {
+          font-weight: bold;
+          cursor: pointer;
+          color: #fff;
+      }
+      .member-img{
+        cursor: pointer;
+      }
+  </style>
+</head>
+
+<body>
+  <!-- Start Header -->
+  <header>
+
+    <!-- Start Carousal -->
+    <div id="carouselExampleCaptions" class="carousel slide position-relative " data-ride="carousel">
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= image_tag "images/slideshow-1.jpg", class: "d-block  w-100" %>
+          <div class="carousel-caption col-md-6 m-auto">
+            <h1 class="font-weight-bolder">We build great brands.</h1>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag "images/slideshow-2.jpg", class: "d-block  w-100" %>
+          <div class="carousel-caption col-md-6 m-auto">
+            <h1 class="font-weight-bolder">Focused on strategy.</h1>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag "images/slideshow-3.jpg", class: "d-block  w-100" %>
+          <div class="carousel-caption col-md-6  m-auto">
+            <h1 class="font-weight-bolder">Advanced in digital works.</h1>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev carousel-icon" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span aria-hidden="true"><i class="fas fa-2x fa-chevron-left"></i></span>
+      </a>
+      <a class="carousel-control-next carousel-icon" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span aria-hidden="true"><i class="fas fa-2x fa-chevron-right"></i></span>
+      </a>
+    </div>
+    <!-- End Carousal -->
+
+  </header>
+
+  <!-- End Header -->
+
+  <!-- Start About -->
+  <section id="about-sec" class="py-3">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-8 text-center m-auto heading">
+          <h3 class="font-weight-bolder ">
+            A
+          </h3>
+          <h2 class="font-weight-bolder ">
+            About Us
+          </h2>
+
+          <p class="text-muted pt-3">Pellentesque elementum libero enim, eget gravida nunc laoreet et. Nullam ac enim auctor, fringilla risus at, imperdiet turpis. Pellentesque elementum libero enim.</p>
+        </div>
+      </div>
+      <div class="row pt-5">
+        <div class="col-md-7">
+          <p class="text-muted">
+            Pellentesque vel elit egestas, pretium est ac, convallis orci. Vivamus sem nisl, tristique vel fringilla vitae, efficitur at eros. Duis aliquet aliquet pharetra. Suspendisse bibendum erat quis gravida pulvinar. Phasellus vel eros porta, blandit dui ac, viverra felis.
+          </p>
+          <p class="text-muted">
+            Nunc placerat iaculis pulvinar. Nullam auctor mauris sed urna posuere volutpat. Mauris ut dui sit amet elit fermentum fermentum. Fusce tincidunt diam at bibendum porta.
+          </p>
+          <p class="text-muted">
+            Aliquam nunc felis, sagittis eu purus non, interdum vehicula urna. Vivamus congue diam sapien, eu pellentesque ipsum ultricies quis.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <div class="d-flex justify-content-between py-2">
+            <span class="text-secondary progress-head">Delivery</span>
+            <span class="text-secondary">99%</span>
+          </div>
+          <div class="progress my-1">
+            <div class="progress-bar" role="progressbar" style="width: 99%" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="d-flex justify-content-between py-2">
+            <span class="text-secondary progress-head ">Branding</span>
+            <span class="text-secondary">90%</span>
+          </div>
+          <div class="progress my-1">
+            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="d-flex justify-content-between py-2">
+            <span class="text-secondary progress-head">Design</span>
+            <span class="text-secondary">90%</span>
+          </div>
+          <div class="progress my-1">
+            <div class="progress-bar " role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="d-flex justify-content-between py-2">
+            <span class="text-secondary progress-head">Customer Service</span>
+            <span class="text-secondary">90%</span>
+          </div>
+          <div class="progress my-1">
+            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- End About -->
+
+  <!-- Start Our Team Section -->
+
+  <section id="our-team">
+    <div class="container">
+      <div class="row mb-3 ">
+        <div class="col-md-8 text-center m-auto heading">
+          <h3 class="font-weight-bolder ">
+            O
+          </h3>
+          <h2 class="font-weight-bolder ">
+            Our Products
+          </h2>
+          <p class="text-muted pt-3">Eget gravida nunc laoreet et. Nullam ac enim auctor, fringilla risus at, imperdiet turpis. Pellentesque elementum libero enim.</p>
+        </div>
+      </div>
+      <div class="row py-5">
+        <div class=" col-sm-6 col-lg-3">
+          <div class="layer text-center">
+            <div class="member-img position-relative overflow-hidden rounded" onclick="location.href='<%= products_path %>'">
+              <%= image_tag "images/category_8.png", class: "w-100" %>
+              <div class="overlay">
+                <div class=" h-100 member-links d-flex justify-content-center align-items-center ">
+                   <h5 class="text-white">View Now</h5>
+                </div>
+              </div>
+            </div>
+            <div class="member-details">
+              <!-- <h5 class="my-2 member-name">Michael Broad</h5> -->
+              <h5 class="my-2">Jackets</h5>
+            </div>
+          </div>
+        </div>
+        <div class=" col-sm-6 col-lg-3">
+          <div class="layer text-center">
+            <div class="member-img position-relative overflow-hidden rounded" onclick="location.href='<%= products_path %>'">
+              <%= image_tag "images/product4.png", class: "w-100" %>
+              <div class="overlay">
+                <div class=" h-100 member-links d-flex justify-content-center align-items-center ">
+                  <h5 class="text-white">View Now</h5>
+                </div>
+              </div>
+            </div>
+            <div class="member-details">
+              <h5 class="my-2">Pullover</h5>
+            </div>
+          </div>
+        </div>
+        <div class=" col-sm-6 col-lg-3">
+          <div class="layer text-center">
+            <div class="member-img position-relative overflow-hidden rounded" onclick="location.href='<%= products_path %>'">
+              <%= image_tag "images/product3.png", class: "w-100" %>
+              <div class="overlay">
+                <div class=" h-100 member-links d-flex justify-content-center align-items-center ">
+                  <h5 class="text-white">View Now</h5>
+                </div>
+              </div>
+            </div>
+            <div class="member-details">
+              <h5 class="my-2">Pullover</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="layer text-center">
+            <div class="member-img position-relative overflow-hidden rounded" onclick="location.href='<%= products_path %>'">
+              <%= image_tag "images/category_6.png", class: "w-100" %>
+              <div class="overlay">
+                <div class=" h-100 member-links d-flex justify-content-center align-items-center ">
+                  <h5 class="text-white">View Now</h5>
+                </div>
+              </div>
+            </div>
+            <div class="member-details">
+              <h5 class="my-2">T-Shirts</h5>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row justify-content-center  ask-ques">
+        <div class="col-sm-8 ">
+          <div class="temp">
+            <h3 class="">Do you have any ideas?</h3>
+          </div>
+        </div>
+        <div class="col-sm-4 contact-us-link">
+          <div class="temp">
+            <a href="#" class="text-decoration-none btn contact-us text-white px-4 py-2">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- End Our Team Section -->
+
+  <!-- Start Services Section -->
+
+  <section id="services" class="py-4">
+    <div class="container">
+      <div class="row  mb-5">
+        <div class="col-md-8 text-center m-auto heading">
+          <h3 class="font-weight-bolder ">
+            S
+          </h3>
+          <h2 class="font-weight-bolder ">
+            Services
+          </h2>
+          <p class="text-muted pt-3">Pellentesque elementum libero enim, eget gravida nunc laoreet et. Nullam ac enim auctor, fringilla risus at, imperdiet turpis. Pellentesque elementum libero enim.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 item">
+          <div class="row py-3">
+            <div class="col-2">
+              <i class="fas fa-laptop fa-2x icon-color"></i>
+            </div>
+            <div class="col-10">
+              <h3 class="sevice-item-head">Free Delivery</h3>
+              <p class="text-muted">Ferri reque integre mea ut, eu eos vide errem noluise se. Putent laoreet et ius utroque dissentias ut.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item">
+          <div class="row py-3">
+            <div class="col-2">
+              <i class="fas fa-pencil-ruler fa-2x icon-color"></i>
+            </div>
+            <div class="col-10">
+              <h3 class="sevice-item-head">Modern Brands</h3>
+              <p class="text-muted">Ferri reque integre mea ut, eu eos vide errem noluise se. Putent laoreet et ius utroque dissentias ut.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item">
+          <div class="row py-3">
+            <div class="col-2">
+              <i class="far fa-flag fa-2x icon-color"></i>
+            </div>
+            <div class="col-10">
+              <h3 class="sevice-item-head">Awesome Products</h3>
+              <p class="text-muted">Ferri reque integre mea ut, eu eos vide errem noluise se. Putent laoreet et ius utroque dissentias ut.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4  col-sm-6 item">
+          <div class="row py-3">
+            <div class="col-2">
+              <i class="far fa-address-card fa-2x icon-color"></i>
+            </div>
+            <div class="col-10">
+              <h3 class="sevice-item-head">Discounts</h3>
+              <p class="text-muted">Ferri reque integre mea ut, eu eos vide errem noluise se. Putent laoreet et ius utroque dissentias ut.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4  col-sm-6 item">
+          <div class="row py-3">
+            <div class="col-2">
+              <i class="fas fa-cog fa-2x icon-color"></i>
+            </div>
+            <div class="col-10">
+              <h3 class="sevice-item-head">Customer Service</h3>
+              <p class="text-muted">Ferri reque integre mea ut, eu eos vide errem noluise se. Putent laoreet et ius utroque dissentias ut.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4  col-sm-6 item">
+          <div class="row py-3">
+            <div class="col-2">
+              <i class="fas fa-headset fa-2x icon-color"></i>
+            </div>
+            <div class="col-10">
+              <h3 class="sevice-item-head">Cash Back</h3>
+              <p class="text-muted">Ferri reque integre mea ut, eu eos vide errem noluise se. Putent laoreet et ius utroque dissentias ut.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Services Section -->
+
+  <!-- Start Contact Section -->
+
+  <section id="contact" class="py-3">
+    <div class="container">
+      <div class="row py-4">
+        <div class="col-md-8 text-center heading m-auto">
+          <div class="heading heading-temp">
+            <h3 class="font-weight-bolder ">
+              C
+            </h3>
+            <h2 class="font-weight-bolder ">
+              Get In Touch
+            </h2>
+          </div>
+          <p class="text-muted pt-3">Pellentesque elementum libero enim, eget gravida nunc laoreet et. Nullam ac enim auctor, fringilla risus at, imperdiet turpis. Pellentesque elementum libero enim.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 contact-info">
+          <h3 class="pb-2">
+            Get answers and advices from professional consultants.
+          </h3>
+          <div class="row py-3 contact-item contact-item-brdr">
+            <div class="col-2 text-center">
+              <i class="far fa-map fa-3x p-0 icon-color"></i>
+            </div>
+            <div class="col-10">
+              <h5>Address</h5>
+              <p>1650 Lombard Street, San Francisco, CA 94123</p>
+            </div>
+          </div>
+          <div class="row py-3 contact-item contact-item-brdr">
+            <div class="col-2 text-center">
+              <i class="fas fa-mobile-alt fa-3x p-0 icon-color"></i>
+            </div>
+            <div class="col-10 ">
+              <h5>Phone</h5>
+              <p>+1 (415) 876-3250 / +1 (415) 876-3251</p>
+            </div>
+          </div>
+          <div class="row py-3 contact-item">
+            <div class="col-2 text-center">
+              <i class="far fa-envelope fa-3x p-0 icon-color"></i>
+            </div>
+            <div class="col-10 contact-mail">
+              <h5>Say Hello</h5>
+              <a class="text-decoration-none" href="#">
+                <p>[email protected]</p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form pt-4">
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your Name">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your Email">
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Phone">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Message"></textarea>
+              </div>
+              <button type="submit" class="btn contact-us my-3 text-white px-4 py-2"><i class="far fa-paper-plane pr-2"></i> Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- End Contact Section -->
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>

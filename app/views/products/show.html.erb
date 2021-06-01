@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+
+
+
+<h2 style="text-align: center">Product Details</h2>
+<div class="card container shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+    <div class="text-center">
+      <% @product.images.each do |image| %>
+        <%= image_tag image, style: "width:150px;height:150px;", class: "card-img-top rounded-lg border border-dark m-2" %>
+      <% end %>
+    </div>
+
+    <p>
+      <strong>Title:</strong>
+      <%= @product.title %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @product.description %>
+    </p>
+
+    <p>
+      <strong>Price:</strong>
+      <%= number_to_currency @product.price %>
+    </p>
+
+    <p>
+      <strong>In stock:</strong>
+      <%= @product.in_stock %> units
+    </p>
+
+    <p>
+      <strong>Brand:</strong>
+      <%= @product.brand.name %>
+    </p>
+
+    <p>
+      <strong>Category:</strong>
+      <%= @product.category.name %>
+    </p>
+    <% if can? :create, Cart %>
+      <div class="mt-2">
+        <%= render "carts/form", :product => @product %>
+      </div>
+    <% end %>
+    <a href="<%= products_path %>" class="btn btn-secondary m-1">Back</a>
+    <% if can? :update, @product %>
+      <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-info m-1" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="container">
+  <div class="row bg-white p-4 shadow rounded justify-content-between mb-3">
+    <p>
+      <strong>Category Name:</strong>
+      <%= @category.name %>
+    </p>
+    <div>
+      <% if can? :update, @category %>
+        <%= link_to 'Edit', edit_category_path(@category), class: "btn btn-warning" %>
+      <% end %>
+      <%= link_to 'Back', categories_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center bg-light py-5 shadow">
+    <% @category.products.each do |product| %>
+      <div class="card my-2 col-12 col-md-4 col-lg-3 rounded-lg mx-2 card-shadow">
+        <div class="text-center">
+          <%= image_tag product.images.first, class: "card-img-top rounded-lg border m-2 w-50" if product.images.attached? %>
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title"><%= product.title %></h5>
+          <small class="text-muted d-block">Brand: <%= product.brand.name %></small>
+          <small class="text-muted d-block">Category: <%= product.category.name %></small>
+        </div>
+        <div class="card-body p-0 pb-2 position-relative">
+          <p class="card-text "><%= product.description %></p>
+          <p class="card-text">left: <%= product.in_stock %></p>
+          <p class="card-text">price: $<%= product.price %></p>
+          <% if can? :read, product %>
+            <%= link_to 'Show', product, class: "btn btn-primary" %>
+          <% end %>
+          <% if can? :update, product %>
+            <%= link_to 'Edit', edit_product_path(product), class: "btn btn-info" %>
+          <% end %>
+          <% if can? :destroy, product %>
+            <%= link_to 'Delete', product, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% if @category.products.blank? %>
+      <div>
+        <span>Sorry, no products found!</span>
+        <i class="fas fa-frown"></i>
+      </div>
+    <% end %>
+  </div>
+
+
+</div>
+

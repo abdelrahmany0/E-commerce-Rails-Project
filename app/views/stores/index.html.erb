@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+
+  <div class="row p-4 bg-white shadow">
+    <div class="col-md-9"><h1>Stores</h1></div>
+    <% if can? :create, Store %>
+      <div class="col-md-3 text-right">
+        <%= link_to 'New Store', new_store_path, class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+  <table class="table table-hover  rounded mt-4 bg-light">
+    <thead>
+    <tr>
+      <th class="text-center">Name</th>
+      <th class="text-center">Summary</th>
+      <th class="text-center">User</th>
+      <th class="text-center">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @stores.each do |store| %>
+      <tr>
+        <td class="text-center"><%= store.name %></td>
+        <td class="text-center"><%= store.summary %></td>
+        <td class="text-center"><%= store.user.name %></td>
+        <td class="text-center">
+          <% if can? :read, Store %>
+            <%= link_to 'Show products', store, class: "btn btn-info" %>
+          <% end %>
+          <% if can? :update, store %>
+            <%= link_to 'Edit', edit_store_path(store), class: "btn btn-warning" %>
+          <% end %>
+          <% if can? :destroy, store %>
+            <%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>
+<br>
+
+

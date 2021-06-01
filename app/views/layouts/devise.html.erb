@@ -1,0 +1,24 @@
+<% content_for :stylesheets do %>
+  <link href="/assets/devise.css" media="all" rel="stylesheet" />
+  <style>
+    <%# if current_page?(:controller => 'users/registrations', :action => 'edit') %>
+    body {
+        background-image: inherit;
+    }
+
+    <%# else %>
+<!--    .navbar, footer {-->
+<!--        display: none;-->
+<!--    }-->
+
+    <%# end %>
+  </style>
+<% end %>
+
+<% content_for :content do %>
+  <div class="container-fluid authentication mt-5 mb-3  ">
+    <%= yield %>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

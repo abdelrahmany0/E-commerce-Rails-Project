@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ProductAdapter: one
+  User: one
+  total: 1.5
+
+two:
+  ProductAdapter: two
+  User: two
+  total: 1.5

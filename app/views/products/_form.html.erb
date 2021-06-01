@@ -1,0 +1,82 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.file_field :images, multiple: true, direct_upload: true %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :in_stock %>
+    <%= form.number_field :in_stock %>
+  </div>
+
+<!--  <div class="field">-->
+    <%#= form.label :brand_id %>
+    <%#= form.text_field :brand_id %>
+<!--  </div>-->
+
+  <div class="field">
+    <%#= form.label :store %>
+    <%#= form.number_field :store %>
+<!--    <label for="product[store]">Store:</label>-->
+<!--    <select name="product[store]" id="product[store]">-->
+<!--      <option disabled selected>Select store </option>-->
+      <%# current_user.stores.each do |store| %>
+<!--        <option value="<%#= store.id %>"><%#= store.name %></option>-->
+      <%# end %>
+<!--    </select>-->
+    <%= form.select :store_id, options_for_select(current_user.stores.collect { |store| [store.name, store.id ]}), :prompt => "Select store" %>
+  </div>
+  <div class="field">
+    <label for="product[brand_id]">Brand:</label>
+    <select name="product[brand_id]" id="product[brand_id]">
+      <option disabled selected>Select a brand </option>
+      <% @brands.each do |brand| %>
+        <option <% if @product_brand == brand.name  %> selected <% end %>
+              value="<%= brand.id %>"><%= brand.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+<!--  <div class="field">-->
+    <%#= form.label :category_id %>
+    <%#= form.text_field :category_id %>
+<!--  </div>-->
+
+  <div class="field">
+    <label for="product[category_id]">Category:</label>
+    <select name="product[category_id]" id="product[category_id]">
+      <option disabled selected value="<%= nil %>">Select a Category </option>
+      <% @categories.each do |category| %>
+        <option  <% if @product_category == category.name  %> selected <% end %>
+              value="<%= category.id %>"><%= category.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

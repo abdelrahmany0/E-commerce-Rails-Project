@@ -1,0 +1,30 @@
+html, body{
+    height: 100%;
+}
+body{
+    background: url("device/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.authentication {
+    width: 70%;
+    background-color: #eeeeee;
+    border-radius: 20px;
+    box-shadow: #BBBBBB 1px 2px 7px;
+}
+
+.sign_up-image{
+    padding: 0;
+}
+
+.sign_up-image img{
+    border-radius: 20px 0 0 20px;
+}
+
+#error_explanation{
+    color: darkred;
+}
+
+#error_explanation li{
+    color: darkorange;
+}

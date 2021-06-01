@@ -1,0 +1,8 @@
+<tr>
+  <td><%= product_adapter.id %></td>
+  <td><%= product_adapter.product.title %></td>
+  <td><%= number_to_currency product_adapter.item_price %></td>
+  <td><%= product_adapter.product_quantity %></td>
+  <td><%= number_to_currency product_adapter.product_quantity*product_adapter.item_price %></td>
+  <td><%= product_adapter.confirmed %></td>
+</tr>

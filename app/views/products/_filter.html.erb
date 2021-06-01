@@ -1,0 +1,28 @@
+<%= form_tag products_path(:category => params[:category], :brand => params[:brand], :seller => params[:seller]), :method => :get, enforce_utf8: false do %>
+  <% if params[:q].present? %>
+    <%= hidden_field_tag :q, params[:q] %>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag :category %>
+    <%= select_tag :category, options_for_select(@categories.collect { |category| [category.name, category.name, :selected => params[:category] == category.name] }), :prompt => "Select Category" %>
+  </div>
+  <div class="field">
+    <%= label_tag :brand %>
+    <%= select_tag :brand, options_for_select(@brands.collect { |brand| [brand.name, brand.name, :selected => params[:brand] == brand.name] }), :prompt => "Select Brand" %>
+  </div>
+
+  <div class="price-slider mb-3">
+    <div>
+      <%= range_field_tag :price_gte, params[:price_gte].present?? params[:price_gte]: 0,  {:min => "0", :max => "9999"} %>
+      <%= range_field_tag :price_lte, params[:price_lte].present?? params[:price_lte]: 10000, :min => "1", :max => "10000" %>
+    </div>
+    <div>
+      <%= label_tag :price_gte, "Price" %>
+      <span>From</span> <%= number_field_tag :price_gte, params[:price_gte].present?? params[:price_gte]: 0,  {:min => "0", :max => "9999", :name => nil} %>
+      <span>To </span><%= number_field_tag :price_lte, params[:price_gte].present?? params[:price_lte]: 10000,  {:min => "1", :max => "10000", :name => nil} %>
+    </div>
+  </div>
+
+  <%= submit_tag "Filter", class: "btn btn-block btn-primary my-2 my-sm-0", name: nil %>
+<% end %>

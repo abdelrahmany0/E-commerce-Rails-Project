@@ -1,0 +1,11 @@
+<% if order.delivered? %>
+  <td style="color: green"><i class="fas fa-truck"></i> Delivered</td>
+<% elsif order.confirmed? %>
+  <td style="color: green">
+    <i class="fas fa-check-circle"></i> Confirmed
+  </td>
+<% else %>
+  <td style="color: goldenrod">
+    <i class="fas fa-exclamation-circle"></i> Pending
+  </td>
+<% end %>

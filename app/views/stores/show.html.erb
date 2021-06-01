@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+
+  <div class="row bg-white p-4 mb-3 shadow rounded">
+    <div class="col-md-9">
+      <p>
+        <strong>Store:</strong>
+        <%= @store.name %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @store.summary %>
+      </p>
+
+      <p>
+        <strong>Seller:</strong>
+        <%= @store.user.name %>
+      </p>
+    </div>
+    <div class="col-md-3 row align-items-end justify-content-end">
+      <% if can? :update, @store %>
+        <%= link_to 'Edit', edit_store_path(@store), class: "btn btn-warning mx-2" %>
+      <% end %>
+      <%= link_to 'Back', stores_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+      <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Orders</a>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="row bg-light justify-content-center shadow rounded py-5">
+        <% @store.products.each do |product| %>
+          <div class="card my-2 col-12 col-md-4 col-lg-3 rounded-lg mx-2 card-shadow">
+            <div class="text-center">
+              <%= image_tag product.images.first, class: "card-img-top rounded-lg border m-2 w-50" if product.images.attached? %>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title"><%= product.title %></h5>
+              <small class="text-muted d-block">Brand: <%= product.brand.name %></small>
+              <small class="text-muted d-block">Category: <%= product.category.name %></small>
+            </div>
+            <div class="card-body p-0 pb-2 position-relative">
+              <p class="card-text "><%= product.description %></p>
+              <p class="card-text">left: <%= product.in_stock %></p>
+              <p class="card-text">price: $<%= product.price %></p>
+              <%= link_to 'Show', product, class: "btn btn-primary" %>
+              <%= link_to 'Edit', edit_product_path(product), class: "btn btn-info" %>
+              <%= link_to 'Delete', product, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">User</th>
+          <th scope="col">Total Price</th>
+          <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render @orders %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>
+
